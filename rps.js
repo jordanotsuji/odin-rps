@@ -1,3 +1,8 @@
+// Rock Paper Scissors code
+// Functions: getComputerChoice()
+//            playerSelectiOn()
+//            playRound(player choice, computer choice)
+
 const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
