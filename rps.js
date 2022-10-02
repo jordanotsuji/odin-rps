@@ -53,6 +53,7 @@ function playRound(player, computer) {
 console.log("Welcome to Rock Paper Scissors!");
 let games = prompt("How many games would you like to play?")
 
+
 for (let i = 0; i < games; i++) {
   let playerChoice = playerSelection();
   console.log(playRound(playerChoice, getComputerChoice()));
