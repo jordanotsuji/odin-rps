@@ -3,8 +3,16 @@
 //            playerSelectiOn()
 //            playRound(player choice, computer choice)
 
-const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 let inRound = false;
+const choices = ["rock", "paper", "scissors"];
+
+// DOM elements
+const playerChoiceBoxes = document.querySelectorAll('.player .choice-box')
+const winsText = document.querySelector('.wins')
+const lossesText = document.querySelector('.losses')
+
 
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
@@ -13,8 +21,19 @@ function getComputerChoice() {
 function playerSelection(e) {
   if (inRound) return;   // If in the middle 
 
-  console.log(e.target.id);
+  // now in the middle of a round
+  inRound = true;
+  // Handle classes that deal with selection animation
+  e.target.classList.add('selected')
+  playerChoiceBoxes.forEach(box => box.classList.remove('hover'))
 
+  let playerChoice = e.target.id;
+
+  setTimeout(() => {
+    e.target.classList.remove('selected');
+    playerChoiceBoxes.forEach(box => box.classList.add('hover'))
+    inRound = false;
+  }, 1000);
   // let choice = prompt("Rock, Paper, Scissors, Shoot: ");
   // while (!choices.includes(choice.toLowerCase())) {
   //   console.log("Please choose a valid option")
@@ -52,6 +71,10 @@ function playRound(player, computer) {
     }
   }
 }
+
+
+// Animations Area
+playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('click', playerSelection))
 
 // Gameplay Area
 
