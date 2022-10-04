@@ -1,39 +1,64 @@
 * {
-  border: 1px dotted red;
+  /* border: 1px dotted red; */
 }
 
-.master, .game-body, .score {
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #222831;
+  color: #DDDDDD;
+}
+
+.master, .game-body, .score, .header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.header {
+  font-weight: bold;
+  font-size: 60px;
+  color: #FAC650;
+  padding: 20px;
+  background-color: #111720;
+}
+
 .score {
   flex-direction: row;
   gap: 100px;
+  margin: 30px 0 30px 0;
+  color: inherit;
 }
 
 .wins, .losses {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: 700;
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 170px;
+  height: 170px;
   border-radius: 15px;
-  border: 3px solid black;
+  border: 3px solid #DDDDDD;
+}
+
+.vs {
+  margin: 20px 0px 20px 0px;
+  font-weight: 700;
+  font-size: 40px;
+  color: inherit;
 }
 
 .player {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
 }
 
 .selected, .hover:hover{
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: darkgrey;
+  box-shadow: 0 0 1rem #DDDDDD;
 }
