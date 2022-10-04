@@ -2,15 +2,56 @@
 <html lang="en">
 
 <head>
-  <title>Rock Paper Scissors in the Console!</title>
+  <title>Rock Paper Scissors</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet">
-  <script defer src="rps.js"></script>
+  <script src="rps.js" defer></script>
 </head>
 
 <body>
-  <h1>Play rock paper scissors in your developer tools console!</h1>
+  <div class="master">
+    <div class="header">
+      Rock Paper Scissors
+    </div>
+
+    <div class="game-body">
+      <div class="score">
+        <!-- holds the wins vs losses -->
+        <div class="wins">Wins: 0</div>
+        <div class="losses">Losses: 0</div>
+      </div>
+
+      <div class="computer">
+        <!-- holds elements that have to do with the computer -->
+        <div class="choice-box" id="computer-box">
+          <img src="images/test.jpg" alt="computer's choice">
+        </div>
+      </div>
+
+      <div class="vs">
+        <!-- Simple div to put a vs. between the computer and the player -->
+        VS.
+      </div>
+
+      <div class="player">
+        <!-- holds player choice elements -->
+        <div class="choice-box" id="rock">
+          <img src="images/test.jpg" alt="rock">
+        </div>
+
+        <div class="choice-box" id="paper">
+          <img src="images/test.jpg" alt="paper">
+        </div>
+
+        <div class="choice-box" id="scissors">
+          <img src="images/test.jpg" alt="scissors">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
 </body>
 
 </html>
