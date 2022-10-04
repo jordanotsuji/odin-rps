@@ -4,18 +4,23 @@
 //            playRound(player choice, computer choice)
 
 const choices = ["rock", "paper", "scissors"];
+let inRound = false;
 
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function playerSelection() {
-  let choice = prompt("Rock, Paper, Scissors, Shoot: ");
-  while (!choices.includes(choice.toLowerCase())) {
-    console.log("Please choose a valid option")
-    choice = prompt("Rock, Paper, Scissors, Shoot: ");
-  }
-  return choice.toLowerCase();
+function playerSelection(e) {
+  if (inRound) return;   // If in the middle 
+
+  console.log(e.target.id);
+
+  // let choice = prompt("Rock, Paper, Scissors, Shoot: ");
+  // while (!choices.includes(choice.toLowerCase())) {
+  //   console.log("Please choose a valid option")
+  //   choice = prompt("Rock, Paper, Scissors, Shoot: ");
+  // }
+  // return choice.toLowerCase();
 }
 
 function playRound(player, computer) {
