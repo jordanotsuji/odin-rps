@@ -11,6 +11,7 @@ Additional Ideas:
 - computer choice rolls like a slot machine after user choice and locks the user from making another choice until the animation is done (event listener) 
 - Keyboard functionality (r for paper, etc.)
 - Sounds for choices and the spinning slot machine computer choice
+- player choice lights up until the round is done
 
 Advanced features:
 - Japanese Language Mode (toggle) 
