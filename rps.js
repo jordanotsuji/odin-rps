@@ -20,7 +20,6 @@ function getComputerChoice() {
 
 function playerSelection(e) {
   if (inRound) return;   // If in the middle 
-
   // now in the middle of a round
   inRound = true;
   // Handle classes that deal with selection animation
@@ -28,18 +27,12 @@ function playerSelection(e) {
   playerChoiceBoxes.forEach(box => box.classList.remove('hover'))
 
   let playerChoice = e.target.id;
+  startRound(playerChoice);
 
-  setTimeout(() => {
-    e.target.classList.remove('selected');
-    playerChoiceBoxes.forEach(box => box.classList.add('hover'))
-    inRound = false;
-  }, 1000);
-  // let choice = prompt("Rock, Paper, Scissors, Shoot: ");
-  // while (!choices.includes(choice.toLowerCase())) {
-  //   console.log("Please choose a valid option")
-  //   choice = prompt("Rock, Paper, Scissors, Shoot: ");
-  // }
-  // return choice.toLowerCase();
+  // After round is over, restore classes and selection rights
+  e.target.classList.remove('selected');
+  playerChoiceBoxes.forEach(box => box.classList.add('hover'))
+  inRound = false;
 }
 
 function playRound(player, computer) {
@@ -47,28 +40,40 @@ function playRound(player, computer) {
   computer = computer.toLowerCase();
 
   if (player == computer) {
-    return "draw!"
+    return "draw"
   }
   else if (player == "rock") {
     if (computer == "paper") {
-      return "You Lose!"
+      return "lose"
     } else if (computer == "scissors") {
-      return "You Win!"
+      return "win"
     }
   }
   else if (player == "paper") {
     if (computer == "scissors") {
-      return "You Lose!"
+      return "lose"
     } else if (computer == "rock") {
-      return "You Win!"
+      return "win"
     }
   }
   else {
     if (computer == "rock") {
-      return "You Lose!"
+      return "lose"
     } else if (computer == "paper") {
-      return "You Win!"
+      return "win"
     }
+  }
+}
+
+function startRound(playerChoice) {
+  // slot machine animation
+
+  let result = playRound(playerChoice, getComputerChoice())
+
+  if (result === "win") {
+    winsText.textContent = `Wins: ${++playerScore}`
+  } else if (result === "lose") {
+    lossesText.textContent = `Losses: ${++computerScore}`
   }
 }
 
