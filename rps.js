@@ -7,40 +7,16 @@ let inRound = false;
 const choices = ["rock", "paper", "scissors"];
 
 
-
-function playerSelection(e) {
-  if (inRound) return;   // If in the middle 
-  // now in the middle of a round
-  inRound = true;
-  // Handle classes that deal with selection animation
-  e.target.classList.add('selected')
-  playerChoiceBoxes.forEach(box => box.classList.remove('hover'))
-
-  let playerChoice = e.target.id;
-  startRound(playerChoice);
-
-  // After round is over, restore classes and selection rights
-  e.target.classList.remove('selected');
-  playerChoiceBoxes.forEach(box => box.classList.add('hover'))
-  inRound = false;
-}
-
-function startRound(playerChoice) {
-
-  // slot machine animation
-
-  let result = playRound(playerChoice, getComputerChoice())
-  if (result === "win") {
-    winsText.textContent = `Wins: ${++playerScore}`
-  } else if (result === "lose") {
-    lossesText.textContent = `Losses: ${++computerScore}`
-  }
+function playerSelection(playerChoice) {
+  if (choices.indexOf(playerChoice.toLowerCase()) == -1) return undefined; // if not a choice
+  let computerChoice = getComputerChoice();
+  let result = playRound(playerChoice, computerChoice)
+  return result;
 }
 
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
-
 
 function playRound(player, computer) {
   player = player.toLowerCase();
@@ -77,5 +53,33 @@ const playerChoiceBoxes = document.querySelectorAll('.player .choice-box')
 const winsText = document.querySelector('.wins')
 const lossesText = document.querySelector('.losses')
 
-playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('click', playerSelection))
+playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('click', clickHandler))
 
+function clickHandler(e) {
+  if (inRound) return;
+  inRound = true;
+
+  let playerChoice = e.target.id.toLowerCase();
+  selectionAnimationToggle(e);
+  let result = playerSelection(playerChoice);
+  console.log(result);
+  // slot machine animation 
+  updateScore(result);
+  selectionAnimationToggle(e);
+
+  inRound = false;
+}
+
+function selectionAnimationToggle(e) {
+  // Handle classes that deal with selection animation
+  e.target.classList.toggle('selected')
+  playerChoiceBoxes.forEach(box => box.classList.toggle('hover'))
+}
+
+function updateScore(result) {
+  if (result === "win") {
+    winsText.textContent = `Wins: ${++playerScore}`
+  } else if (result === "lose") {
+    lossesText.textContent = `Losses: ${++computerScore}`
+  }
+}
