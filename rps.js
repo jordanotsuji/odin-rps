@@ -7,11 +7,12 @@ let inRound = false;
 const choices = ["rock", "paper", "scissors"];
 
 
-function playerSelection(playerChoice) {
+function getGameResult(playerChoice, computerChoice) {
+  console.log(playerChoice + " " + computerChoice)
   if (choices.indexOf(playerChoice.toLowerCase()) == -1) return undefined; // if not a choice
-  let computerChoice = getComputerChoice();
+  if (choices.indexOf(computerChoice.toLowerCase()) == -1) return undefined;
   let result = playRound(playerChoice, computerChoice)
-  return result;
+  return result
 }
 
 function getComputerChoice() {
@@ -58,13 +59,14 @@ playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('c
 function clickHandler(e) {
   if (inRound) return;
   inRound = true;
-
+  // gameplay variables needed for animations or to pass to game code
   let playerChoice = e.target.id.toLowerCase();
+  let computerChoice = getComputerChoice();
+  let result = getGameResult(playerChoice, computerChoice);
+
   selectionAnimationToggle(e);
-  let result = playerSelection(playerChoice);
-  console.log(result);
-  // slot machine animation 
-  updateScore(result);
+  computerChoiceAnimation(computerChoice)
+  updateScore(result)
   selectionAnimationToggle(e);
 
   inRound = false;
@@ -82,4 +84,8 @@ function updateScore(result) {
   } else if (result === "lose") {
     lossesText.textContent = `Losses: ${++computerScore}`
   }
+}
+
+function computerChoiceAnimation(computerChoice) {
+
 }
