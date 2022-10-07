@@ -10,11 +10,10 @@
 </head>
 
 <body>
-  <div class="header">
-    Rock Paper Scissors
-  </div>
   <div class="master">
-
+    <div class="header">
+      Rock Paper Scissors
+    </div>
     <div class="game-body">
       <div class="score">
         <!-- holds the wins vs losses -->
@@ -39,9 +38,16 @@
         <img class="choice-box hover" src="images/paper.jpg" alt="paper" id="paper">
         <img class="choice-box hover" src="images/scissors.jpg" alt="scissors" id="scissors">
       </div>
-
     </div>
-  </div>
+
+    <div class="modal" id="endgame-modal">
+      <!-- End game popup that tells the player if they won or lost and to reset score -->
+      <p class="modal-header" id="modal-message">Game Over</p>
+      <button id="restart-button">Play Again</button>
+    </div>
+    <div class="overlay">
+      <!-- div to darken the screen when the game ends   -->
+    </div>
   </div>
 </body>
 
