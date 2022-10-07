@@ -1,8 +1,6 @@
 # odin-rps
 
-Simple console rock paper scissors game in javascript
-
-[live demo](https://jordanotsuji.github.io/odin-rps/)
+Simple console rock paper scissors game in javascript: [live demo](https://jordanotsuji.github.io/odin-rps/)
 
 UI Plan:
 - Rock paper scissors icons in the bottom of the screen
