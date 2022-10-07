@@ -44,6 +44,15 @@ function playRound(player, computer) {
       return "win"
 }
 
+function isGameOver() {
+  return playerScore == 5 || computerScore == 5
+}
+
+function resetGameVars() {
+  playerScore = 0;
+  computerScore = 0;
+}
+
 
 //
 // Animations Area
@@ -54,9 +63,13 @@ const playerChoiceBoxes = document.querySelectorAll('.player .choice-box')
 const winsText = document.querySelector('.wins')
 const lossesText = document.querySelector('.losses')
 const compChoiceImg = document.getElementById('computer-box')
+const endModal = document.getElementById('endgame-modal')
+const restartButton = document.getElementById('restart-button')
+const overlay = document.querySelector('.overlay')
 const choiceImgs = ["images/rock.jpg", "images/paper.jpg", "images/scissors.jpg"]
 
 playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('click', clickHandler))
+restartButton.addEventListener('click', restartGame)
 
 function clickHandler(e) {
   if (inRound) return;
@@ -70,8 +83,11 @@ function clickHandler(e) {
   computerChoiceAnimation(computerChoice)
   updateScore(result)
   selectionAnimationToggle(e);
-
   inRound = false;
+
+  if (isGameOver()) {
+    toggleEndGameModal()
+  }
 }
 
 function selectionAnimationToggle(e) {
@@ -103,4 +119,21 @@ function computerChoiceAnimation(computerChoice) {
   compChoiceImg.src = "images/" + computerChoice + ".jpg"
 }
 
+
+function toggleEndGameModal() {
+  endModal.classList.toggle("active")
+  overlay.classList.toggle("active")
+}
+
+function restartGame() {
+  resetGameVars()
+  resetGameVisual()
+  toggleEndGameModal()
+}
+
+function resetGameVisual() {
+  winsText.textContent = `Wins: 0`
+  lossesText.textContent = `Losses: 0`
+  compChoiceImg.src = "images/xi.jpg"
+}
 
