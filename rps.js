@@ -119,7 +119,6 @@ function computerChoiceAnimation(computerChoice) {
   compChoiceImg.src = "images/" + computerChoice + ".jpg"
 }
 
-
 function toggleEndGameModal() {
   endModal.classList.toggle("active")
   overlay.classList.toggle("active")
