@@ -19,6 +19,7 @@ body {
 .header {
   font-weight: bold;
   font-size: 60px;
+  width: 100%;
   color: #FAC650;
   padding: 20px;
   background-color: #111720;
@@ -66,4 +67,56 @@ img {
   transform: scale(1.1);
   border-color: darkgrey;
   box-shadow: 0 0 1rem #DDDDDD;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  padding: 30px;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  border-radius: 10px;
+  background-color: #222831;
+  text-align: center;
+  font-size: 30px;
+  user-select: none;
+  /* this transform hides the modal */
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#restart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:30px;
+  padding: 10px 20px;
+  margin-top: 25px;
+  margin-bottom: 15px; 
+  border-radius: 10px;
+}
+
+.overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: black;
+  opacity: 0.6; 
+}
+
+.overlay.active {
+  display: block;
 }
