@@ -53,6 +53,8 @@ function playRound(player, computer) {
 const playerChoiceBoxes = document.querySelectorAll('.player .choice-box')
 const winsText = document.querySelector('.wins')
 const lossesText = document.querySelector('.losses')
+const compChoiceImg = document.getElementById('computer-box')
+const choiceImgs = ["images/rock.jpg", "images/paper.jpg", "images/scissors.jpg"]
 
 playerChoiceBoxes.forEach(playerChoiceBox => playerChoiceBox.addEventListener('click', clickHandler))
 
@@ -87,5 +89,18 @@ function updateScore(result) {
 }
 
 function computerChoiceAnimation(computerChoice) {
-
+  // let cycles = 20;
+  // let choice = 0;
+  // for (let i = 0; i < cycles; i++) {
+  //   setTimeout(() => {
+  //     compChoiceImg.src = choiceImgs[choice % 3]
+  //   }, 1000 * i);
+  //   choice++
+  // }
+  // setTimeout(() => {
+  //   compChoiceImg.src = "images/" + computerChoice + ".jpg"
+  // }, 1000 * cycles)
+  compChoiceImg.src = "images/" + computerChoice + ".jpg"
 }
+
+
