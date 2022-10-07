@@ -10,7 +10,7 @@ body {
   color: #DDDDDD;
 }
 
-.master, .game-body, .score, .header {
+.master, .game-body, .score, .header, .computer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,6 +33,11 @@ body {
 
 .wins, .losses {
   font-size: 50px;
+  font-weight: 700;
+}
+
+.computer {
+  font-size: 25px;
   font-weight: 700;
 }
 
